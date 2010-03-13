@@ -1,0 +1,11 @@
+/* demo stylesheet */
+
+a.active
+{
+	color: #ffff00;
+}
+
+a.open
+{
+	color: #ff0000;
+}
