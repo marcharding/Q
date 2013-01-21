@@ -36,15 +36,15 @@ class Q_Dispatch
 			$path = $this->dispatchOptions['index'];
 		}
 
-		$qTemplate = new Q_Template( $template );
+		$qTemplate = new Q_Template( $template, $this->dispatchOptions['web'] );
 
-		if ( file_exists( DOCUMENT_ROOT . '/pages/' . $path . '.php' ) ) {
-			$qTemplate->addPage( DOCUMENT_ROOT . '/pages/' . $path . '.php' );
-		} else if ( file_exists( DOCUMENT_ROOT . '/pages/' . $path . '/index.php' ) ) {
-			$qTemplate->addPage( DOCUMENT_ROOT . '/pages/' . $path . '.php' );
+		if ( file_exists( $this->dispatchOptions['web'] . '/pages/' . $path . '.php' ) ) {
+			$qTemplate->addPage( $this->dispatchOptions['web'] . '/pages/' . $path . '.php' );
+		} else if ( file_exists( $this->dispatchOptions['web'] . '/pages/' . $path . '/index.php' ) ) {
+			$qTemplate->addPage( $this->dispatchOptions['web'] . '/pages/' . $path . '.php' );
 		} else {
 			header( 'HTTP/1.0 404 Not Found' );
-			$qTemplate->addPage( DOCUMENT_ROOT . '/pages/' . $this->dispatchOptions['404'] . '.php' );
+			$qTemplate->addPage( $this->dispatchOptions['web'] . '/pages/' . $this->dispatchOptions['404'] . '.php' );
 		}
 
 		return $qTemplate->render();

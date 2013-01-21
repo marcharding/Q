@@ -26,12 +26,15 @@ class Q_Template
 	/** Filename of template */
 	private $template;
 
+	/** Webroot */
+	private $web;
+
 	/**
 	 * Construct template object
 	 *
 	 * @param string $template Template to render, optional
 	 */
-	function __construct( $template = false )
+	function __construct( $template = false, $web = __DIR__ )
 	{
 		if ( $template ) {
 			$this->template = $template;
@@ -40,6 +43,7 @@ class Q_Template
 		$this->dom = new DOMDocument();
 		$this->dom->preserveWhiteSpace = false;
 		$this->dom->formatOutput = true;
+		$this->web = $web;
 	}
 
 	/**
@@ -64,6 +68,18 @@ class Q_Template
 		if ( array_key_exists( $key, $this->stack ) ) {
 			return $this->stack[$key];
 		}
+	}
+
+	/**
+	 * Render Navigation
+	 *
+	 * @param string $path Path to template
+	 * @param string $uri Request URI
+	 * @return string Navigation
+	 */
+	public function navigation( $path, $uri, $options = array() )
+	{
+		return Q_Navigation::render( $this->web . $path, $uri, $options );
 	}
 
 	/**

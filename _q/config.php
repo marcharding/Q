@@ -21,7 +21,3 @@ if( DEVELOPMENT ) {
 	ini_set( 'display_errors', 0 );
 	libxml_use_internal_errors( true );
 }
-
-// set required paths
-define( 'DOCUMENT_ROOT', dirname( dirname( __FILE__ ) ) );
-define( '_Q', DOCUMENT_ROOT . '/_q/app' );

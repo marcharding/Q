@@ -7,7 +7,7 @@
  */
 function autoloadFunction( $class )
 {
-	$file = _Q . '/' . $class . '.php';
+	$file = __DIR__ . '/app/' . $class . '.php';
 
 	if( is_file( $file ) ) {
 		require_once $file;

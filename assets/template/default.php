@@ -16,11 +16,11 @@
 
 <?php echo $q->g( 'image' ) ?>
 
-<?php echo Q_Navigation::render( DOCUMENT_ROOT . '/assets/navigation/default.php', $_SERVER['REQUEST_URI'] ); ?>
+<?php echo $q->navigation( '/assets/navigation/default.php', $_SERVER['REQUEST_URI'] ); ?>
 
-<?php echo Q_Navigation::render( DOCUMENT_ROOT . '/assets/navigation/default.php', $_SERVER['REQUEST_URI'], array( 1 => 0 ) ); ?>
+<?php echo $q->navigation( '/assets/navigation/default.php', $_SERVER['REQUEST_URI'], array( 1 => 0 ) ); ?>
 
-<?php echo Q_Navigation::render( DOCUMENT_ROOT . '/assets/navigation/default.php', $_SERVER['REQUEST_URI'], 3 ); ?>
+<?php echo $q->navigation( '/assets/navigation/default.php', $_SERVER['REQUEST_URI'], 3 ); ?>
 
 <?php echo $q->g( 'content' ) ?>
 
