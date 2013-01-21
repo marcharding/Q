@@ -94,8 +94,9 @@ class Q_Navigation
 			$level = $range;
 			$depth = false;
 		} else {
-			$level = array_shift( array_keys( $range ) );
-			$depth = array_shift( array_values( $range ) );
+			reset( $range );
+			$level = key( $range );
+			$depth = current( $range );
 		}
 
 		$nodeList = $this->xp->query( "/descendant-or-self::*[ name() = 'ul' and count( ancestor-or-self::ul ) >= " . $level . " and descendant-or-self::*[ @class='open' or @class='active' ] ]" )->item( 0 );
