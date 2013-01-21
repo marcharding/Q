@@ -1,5 +1,39 @@
+<IfModule mod_headers.c>
+
+    Header set Connection keep-alive
+
+    Header unset Last-Modified
+
+    <FilesMatch "\.(js|css|xml|gz)$">
+        Header append Vary Accept-Encoding
+    </FilesMatch>
+
+    <FilesMatch "\.(ico|jpeg|jpg|png|gif|swf|css)$">
+        Header set Cache-Control "max-age=5184000, public"
+    </FilesMatch>
+
+    <FilesMatch "\.(js)$">
+        Header set Cache-Control "max-age=5184000, private"
+    </FilesMatch>
+
+    <FilesMatch "\.(xhtml|html|htm|php)$">
+        Header set Cache-Control "max-age=5184000, private, must-revalidate"
+    </FilesMatch>
+
+</IfModule>
+
+<IfModule mod_expires.c>
+
+    <FilesMatch "\.(gif|jpg|jpeg|png|swf|css|js|html?|xml|txt|ico)$">
+        ExpiresActive On
+        ExpiresDefault "access plus 10 years"
+    </FilesMatch>
+
+</IfModule>
+
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
+RewriteBase /
 RewriteRule ^(.*)$ /index.php

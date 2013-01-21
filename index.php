@@ -1,6 +1,7 @@
 <?php
 
 header( 'Content-Type: text/html; charset=utf-8' );
+header( 'Cache-Control: max-age=5184000, private, must-revalidate' );
 
 require_once '_q/bootstrap.php';
 
